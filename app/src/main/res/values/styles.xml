@@ -1,0 +1,32 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/pacific_blue_primary</item>
+        <item name="colorPrimaryDark">@color/pacific_blue_quaterary</item>
+        <item name="colorAccent">@color/sky_blue_quaterary</item>
+        <item name="android:windowBackground">@color/pacific_blue_quaterary</item>
+    </style>
+
+
+    <style name="ButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+
+    <style name="ButtonRoundedBlue" parent="ButtonStyle">
+        <item name="android:textColor">@drawable/selector_blue_button_text</item>
+        <item name="android:background">@drawable/selector_blue_button_background</item>
+    </style>
+
+    <style name="ErrorText" parent="TextAppearance.Design.Error">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+    </style>
+
+</resources>

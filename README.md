@@ -1,0 +1,1 @@
+This application is a Kotlin / Clean code / Clean archi template

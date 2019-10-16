@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white_primary">#ffffff</color>
+    <color name="white_secondary">#fafafa</color>
+    <color name="white_third">#C8C8C8</color>
+
+    <color name="pacific_blue_primary">#2A366A</color>
+    <color name="pacific_blue_secondary">#25305F</color>
+    <color name="pacific_blue_third">#202A52</color>
+    <color name="pacific_blue_quaterary">#1B2446</color>
+
+    <color name="sky_blue_primary">#828BAC</color>
+    <color name="sky_blue_secondary">#6D789F</color>
+    <color name="sky_blue_third">#586391</color>
+    <color name="sky_blue_quaterary">#445084</color>
+
+</resources>

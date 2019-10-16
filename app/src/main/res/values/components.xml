@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Blue button -->
+    <color name="button_background_blue_normal">@color/pacific_blue_primary</color>
+    <color name="button_background_blue_disabled">@color/sky_blue_quaterary</color>
+    <color name="button_background_blue_pressed">@color/pacific_blue_third</color>
+    <color name="button_text_color_blue_normal">@color/white_secondary</color>
+    <color name="button_text_color_blue_disabled">@color/white_secondary</color>
+    <color name="button_text_color_blue_pressed">@color/white_secondary</color>
+</resources>
