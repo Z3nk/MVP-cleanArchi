@@ -3,7 +3,7 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/home" app:startDestination="@id/homeFragment">
 
-    <fragment android:id="@+id/homeFragment" android:name="fr.zunkit.movie.presentation.home.HomeFragment"
+    <fragment android:id="@+id/homeFragment" android:name="fr.zunkit.movie.presentation.home.views.HomeFragment"
               android:label="HomeFragment">
         <action android:id="@+id/action_homeFragment_to_detailsFragment" app:destination="@id/detailsFragment"
         />
