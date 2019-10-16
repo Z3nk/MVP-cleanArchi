@@ -1,4 +1,4 @@
-package fr.zunkit.movie
+package fr.zunkit.movie.config
 
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

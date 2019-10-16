@@ -1,5 +1,6 @@
-package fr.zunkit.movie
+package fr.zunkit.movie.config
 
+import fr.zunkit.movie.BuildConfig
 import fr.zunkit.movie.data.datasources.MovieRemoteDataSource
 import fr.zunkit.movie.data.repositories.MovieRepositoryImpl
 import fr.zunkit.movie.datasources.remote.MovieApi
@@ -52,6 +53,9 @@ val cachesModule: Module = module {
 
 private const val BASE_URL = "https://api.themoviedb.org/"
 
-private val retrofit: Retrofit = createNetworkClient(BASE_URL, BuildConfig.DEBUG)
+private val retrofit: Retrofit = createNetworkClient(
+    BASE_URL,
+    BuildConfig.DEBUG
+)
 
 private val movieApi: MovieApi = retrofit.create(MovieApi::class.java)
