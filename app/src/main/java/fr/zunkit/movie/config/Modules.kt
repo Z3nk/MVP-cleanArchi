@@ -1,12 +1,12 @@
 package fr.zunkit.movie.config
 
 import fr.zunkit.movie.BuildConfig
-import fr.zunkit.movie.data.datasources.MovieRemoteDataSource
-import fr.zunkit.movie.data.repositories.MovieRepositoryImpl
-import fr.zunkit.movie.datasources.remote.MovieApi
-import fr.zunkit.movie.datasources.remote.MovieRemoteDataSourceImpl
-import fr.zunkit.movie.domain.interactors.MovieInteractor
-import fr.zunkit.movie.domain.repositories.MovieRepository
+import fr.zunkit.movie.data.movie.datasources.MovieRemoteDataSource
+import fr.zunkit.movie.data.movie.services.MovieApi
+import fr.zunkit.movie.data.movie.datasources.remote.MovieRemoteDataSourceImpl
+import fr.zunkit.movie.data.movie.repositories.MovieRepositoryImpl
+import fr.zunkit.movie.domain.movie.interactors.MovieInteractor
+import fr.zunkit.movie.domain.movie.repositories.MovieRepository
 import fr.zunkit.movie.presentation.home.presenters.HomePresenter
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module

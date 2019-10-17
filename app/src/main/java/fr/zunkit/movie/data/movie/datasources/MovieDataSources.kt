@@ -1,7 +1,6 @@
-package fr.zunkit.movie.data.datasources
+package fr.zunkit.movie.data.movie.datasources
 
-import fr.zunkit.movie.domain.model.MovieDefinitionEntity
-import fr.zunkit.movie.domain.model.MovieEntity
+import fr.zunkit.movie.domain.movie.model.MovieDefinitionEntity
 import retrofit2.Call
 
 public interface MovieRemoteDataSource{

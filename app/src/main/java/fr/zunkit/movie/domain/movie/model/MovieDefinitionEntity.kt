@@ -1,4 +1,4 @@
-package fr.zunkit.movie.domain.model
+package fr.zunkit.movie.domain.movie.model
 
 import com.google.gson.annotations.SerializedName
 

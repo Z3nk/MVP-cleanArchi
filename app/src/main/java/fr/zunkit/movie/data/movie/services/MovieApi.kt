@@ -1,6 +1,6 @@
-package fr.zunkit.movie.datasources.remote
+package fr.zunkit.movie.data.movie.services
 
-import fr.zunkit.movie.domain.model.MovieDefinitionEntity
+import fr.zunkit.movie.domain.movie.model.MovieDefinitionEntity
 import retrofit2.Call
 import retrofit2.http.GET
 

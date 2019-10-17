@@ -1,7 +1,7 @@
 package fr.zunkit.movie.presentation.home.presenters
 
-import fr.zunkit.movie.domain.interactors.MovieInteractor
-import fr.zunkit.movie.domain.model.MovieDefinitionEntity
+import fr.zunkit.movie.domain.movie.interactors.MovieInteractor
+import fr.zunkit.movie.domain.movie.model.MovieDefinitionEntity
 import fr.zunkit.movie.presentation.model.Movie
 import retrofit2.Call
 import retrofit2.Callback

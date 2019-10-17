@@ -1,7 +1,7 @@
-package fr.zunkit.movie.domain.interactors
+package fr.zunkit.movie.domain.movie.interactors
 
-import fr.zunkit.movie.domain.model.MovieDefinitionEntity
-import fr.zunkit.movie.domain.repositories.MovieRepository
+import fr.zunkit.movie.domain.movie.model.MovieDefinitionEntity
+import fr.zunkit.movie.domain.movie.repositories.MovieRepository
 import retrofit2.Call
 
 public class MovieInteractor(private val movieRepository: MovieRepository) {
