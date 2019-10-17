@@ -11,6 +11,9 @@ import com.bumptech.glide.Glide
 import fr.zunkit.movie.R
 import fr.zunkit.movie.databinding.DetailsFragmentBinding
 import fr.zunkit.movie.presentation.model.Movie
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
@@ -22,7 +25,8 @@ class DetailsFragment : Fragment(), DetailsPresenter.DetailsViewListener {
 
     override fun displayDetailsOf(movie: Movie) {
         binding.lottieLoading.visibility = View.GONE
-        Glide.with(activity!!).load(movie.imageUrl).placeholder(R.drawable.ic_placeholder).into(binding.ivBackground)
+        Glide.with(activity!!).load(movie.imageUrl).placeholder(R.drawable.ic_placeholder)
+            .into(binding.ivBackground)
         binding.tvDescription.text = movie.description
         binding.tvTitle.text = movie.name
     }
@@ -48,7 +52,9 @@ class DetailsFragment : Fragment(), DetailsPresenter.DetailsViewListener {
     private fun subscribeUI() {
 
         arguments?.getString("id")?.let {
-            mPresenter.getDetailMovieOf(it)
+            GlobalScope.launch(Dispatchers.Main) {
+                mPresenter.getDetailMovieOf(it)
+            }
         }
 
     }

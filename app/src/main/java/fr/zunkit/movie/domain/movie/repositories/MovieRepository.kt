@@ -6,5 +6,5 @@ import retrofit2.Call
 
 interface MovieRepository {
     fun getPopularsMovie(): Call<MovieDefinitionEntity>
-    fun getDetailsMovieOf(id: String): Call<MovieEntity>
+    suspend fun getDetailsMovieOf(id: String): MovieEntity
 }

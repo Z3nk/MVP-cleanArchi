@@ -6,7 +6,7 @@ import retrofit2.Call
 
 public interface MovieRemoteDataSource{
     fun getPopularsMovie(): Call<MovieDefinitionEntity>
-    fun getDetailsMovieOf(id: String): Call<MovieEntity>
+    suspend fun getDetailsMovieOf(id: String): MovieEntity
 }
 
 public interface MovieLocalDataSource{

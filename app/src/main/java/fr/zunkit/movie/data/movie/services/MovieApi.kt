@@ -8,8 +8,8 @@ import retrofit2.http.Path
 
 interface MovieApi {
     @GET("/3/discover/movie?sort_by=popularity.desc")
-    fun getPosts(): Call<MovieDefinitionEntity>
+    fun getPopularsMovie(): Call<MovieDefinitionEntity>
 
     @GET("/3/movie/{id}?language=fr")
-    fun getDetailsMovieOf(@Path("id")  id: String): Call<MovieEntity>
+    suspend fun getDetailsMovieOf(@Path("id")  id: String): MovieEntity
 }

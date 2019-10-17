@@ -10,8 +10,6 @@ public class MovieInteractor(private val movieRepository: MovieRepository) {
         return movieRepository.getPopularsMovie()
     }
 
-    fun getDetailsMovieOf(id: String): Call<MovieEntity> {
-        return movieRepository.getDetailsMovieOf(id)
-    }
+    suspend fun getDetailsMovieOf(id: String): MovieEntity = movieRepository.getDetailsMovieOf(id)
 
 }
