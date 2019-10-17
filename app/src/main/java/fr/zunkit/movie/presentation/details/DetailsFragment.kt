@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import fr.zunkit.movie.R
 import fr.zunkit.movie.databinding.DetailsFragmentBinding
 import fr.zunkit.movie.presentation.model.Movie
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
@@ -52,7 +52,7 @@ class DetailsFragment : Fragment(), DetailsPresenter.DetailsViewListener {
     private fun subscribeUI() {
 
         arguments?.getString("id")?.let {
-            GlobalScope.launch(Dispatchers.Main) {
+            lifecycleScope.launch(Dispatchers.Main) {
                 mPresenter.getDetailMovieOf(it)
             }
         }
