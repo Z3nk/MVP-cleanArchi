@@ -5,7 +5,8 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="150dp"
         android:layout_height="200dp"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:id="@+id/container">
 
     <ImageView
             android:id="@+id/iv_background"

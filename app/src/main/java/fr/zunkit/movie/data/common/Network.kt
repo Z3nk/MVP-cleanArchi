@@ -1,4 +1,4 @@
-package fr.zunkit.movie.config
+package fr.zunkit.movie.data.common
 
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -8,7 +8,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 fun createNetworkClient(baseUrl: String, debug: Boolean = false) =
-    retrofitClient(baseUrl, httpClient(debug))
+    retrofitClient(
+        baseUrl,
+        httpClient(debug)
+    )
 
 private fun httpClient(debug: Boolean): OkHttpClient {
     val httpLoggingInterceptor = HttpLoggingInterceptor(HttpLoggingInterceptor.Logger.DEFAULT)
