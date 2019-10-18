@@ -1,28 +1,29 @@
 package fr.zunkit.movie.presentation.home.presenters
 
 import fr.zunkit.movie.domain.movie.interactors.MovieInteractor
-import fr.zunkit.movie.domain.movie.model.MovieDefinitionEntity
 import fr.zunkit.movie.presentation.model.Movie
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class HomePresenter(val view: HomeViewListener, val interactor: MovieInteractor) {
     fun getPopularMovies() {
-        interactor.getPopularMovies().enqueue(object : Callback<MovieDefinitionEntity> {
-            override fun onFailure(call: Call<MovieDefinitionEntity>, t: Throwable) {
-                view.displayErrorServer()
+        try {
+            CoroutineScope(Dispatchers.IO).launch {
+                val response = interactor.getPopularMovies()
+                if (response.isSuccessful) {
+                    withContext(Dispatchers.Main) {
+                        response.body()?.results?.map { Movie(it) }?.let { view.displayMovies(it) }
+                    }
+                } else {
+                    view.displayErrorServer()
+                }
             }
-
-            override fun onResponse(
-                call: Call<MovieDefinitionEntity>,
-                response: Response<MovieDefinitionEntity>
-            ) {
-                response.body()?.results?.map { Movie(it) }?.let { view.displayMovies(it) }
-            }
-
-        })
+        } catch (e: Exception) {
+            view.displayErrorServer()
+        }
     }
 
     interface HomeViewListener {
