@@ -1,4 +1,4 @@
-package fr.zunkit.streamkilled
+package fr.zunkit.poc
 
 import fr.zunkit.movie.domain.movie.model.MovieDefinitionEntity
 import fr.zunkit.movie.domain.movie.model.MovieEntity

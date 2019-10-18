@@ -1,11 +1,11 @@
-package fr.zunkit.streamkilled.presentation.home
+package fr.zunkit.poc.presentation.home
 
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import fr.zunkit.movie.domain.movie.interactors.MovieInteractor
 import fr.zunkit.movie.presentation.home.viewmodels.HomeViewModel
-import fr.zunkit.streamkilled.movieDefinitionEntity
+import fr.zunkit.poc.movieDefinitionEntity
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
@@ -15,12 +15,12 @@ public class HomeViewModelTest {
 
     private lateinit var vm: HomeViewModel
 
+    private val callMovie = Response.success(movieDefinitionEntity)
     private val mockMovieInteractor: MovieInteractor = mock {
         onBlocking() {
             getPopularMovies()
         } doReturn callMovie
     }
-    private val callMovie = Response.success(movieDefinitionEntity)
 
     @Before
     fun setUp() {

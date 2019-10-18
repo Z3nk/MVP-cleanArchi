@@ -1,4 +1,4 @@
-package fr.zunkit.streamkilled.data.movie.repositories
+package fr.zunkit.poc.data.movie.repositories
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
