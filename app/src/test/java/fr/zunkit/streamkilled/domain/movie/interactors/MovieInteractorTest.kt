@@ -6,10 +6,10 @@ import com.nhaarman.mockitokotlin2.whenever
 import fr.zunkit.movie.domain.movie.interactors.MovieInteractor
 import fr.zunkit.movie.domain.movie.model.MovieDefinitionEntity
 import fr.zunkit.movie.domain.movie.repositories.MovieRepository
+import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 import retrofit2.Response
-import retrofit2.mock.Calls
 
 public class MovieInteractorTest {
 
@@ -17,7 +17,7 @@ public class MovieInteractorTest {
 
     private val mockMovieRepository: MovieRepository = mock()
     private val mockMovieDefinition : MovieDefinitionEntity = mock()
-    private val callMovie = Calls.response(Response.success(mockMovieDefinition))
+    private val callMovie = Response.success(mockMovieDefinition)
     @Before
     fun setUp() {
         interactor = MovieInteractor(mockMovieRepository)
@@ -25,6 +25,7 @@ public class MovieInteractorTest {
 
     @Test
     fun `get movies`() {
+        runBlocking {
         // given
         whenever(mockMovieRepository.getPopularsMovie()).thenReturn(callMovie)
 
@@ -33,5 +34,6 @@ public class MovieInteractorTest {
 
         //then
         verify(mockMovieRepository).getPopularsMovie()
+        }
     }
 }

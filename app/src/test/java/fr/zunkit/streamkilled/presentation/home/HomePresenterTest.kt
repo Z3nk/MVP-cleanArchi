@@ -4,14 +4,13 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import fr.zunkit.movie.domain.movie.interactors.MovieInteractor
-import fr.zunkit.movie.domain.movie.model.MovieDefinitionEntity
 import fr.zunkit.movie.presentation.home.presenters.HomePresenter
 import fr.zunkit.movie.presentation.model.Movie
 import fr.zunkit.streamkilled.movieDefinitionEntity
+import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 import retrofit2.Response
-import retrofit2.mock.Calls
 
 public class HomePresenterTest {
 
@@ -19,7 +18,7 @@ public class HomePresenterTest {
 
     private val mockMovieInteractor: MovieInteractor = mock()
     private val mockHomeView: HomePresenter.HomeViewListener = mock()
-    private val callMovie = Calls.response(Response.success(movieDefinitionEntity))
+    private val callMovie = Response.success(movieDefinitionEntity)
 
     @Before
     fun setUp() {
@@ -28,14 +27,16 @@ public class HomePresenterTest {
 
     @Test
     fun `get movies`() {
-        // given
-        whenever(mockMovieInteractor.getPopularMovies()).thenReturn(callMovie)
+        runBlocking {
+            // given
+            whenever(mockMovieInteractor.getPopularMovies()).thenReturn(callMovie)
 
-        // when
-        presenter.getPopularMovies()
+            // when
+            presenter.getPopularMovies()
 
-        //then
-        verify(mockMovieInteractor).getPopularMovies()
-        verify(mockHomeView).displayMovies(movieDefinitionEntity.results.map { Movie(it) })
+            //then
+            verify(mockMovieInteractor).getPopularMovies()
+            verify(mockHomeView).displayMovies(movieDefinitionEntity.results.map { Movie(it) })
+        }
     }
 }
