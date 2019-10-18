@@ -49,6 +49,7 @@ dependencies {
     implementation 'com.airbnb.android:lottie:3.0.0'
     implementation "org.koin:koin-core:2.0.1"
     implementation "org.koin:koin-androidx-scope:2.0.1"
+    implementation "org.koin:koin-androidx-viewmodel:2.0.1"
     implementation 'com.squareup.retrofit2:retrofit:2.6.2'
     implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
     implementation "com.squareup.okhttp3:logging-interceptor:4.0.0"

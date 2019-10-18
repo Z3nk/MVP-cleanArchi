@@ -8,8 +8,9 @@ import fr.zunkit.movie.data.movie.repositories.MovieRepositoryImpl
 import fr.zunkit.movie.data.movie.services.MovieApi
 import fr.zunkit.movie.domain.movie.interactors.MovieInteractor
 import fr.zunkit.movie.domain.movie.repositories.MovieRepository
-import fr.zunkit.movie.presentation.details.DetailsPresenter
-import fr.zunkit.movie.presentation.home.presenters.HomePresenter
+import fr.zunkit.movie.presentation.details.DetailsViewModel
+import fr.zunkit.movie.presentation.home.viewmodels.HomeViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -20,7 +21,7 @@ fun injectFeature() = loadFeature
 private val loadFeature by lazy {
     loadKoinModules(
         listOf(
-            presenterModule,
+            vmModule,
             interactorsModule,
             repositoriesModule,
             dataSourcesModule,
@@ -30,9 +31,9 @@ private val loadFeature by lazy {
     )
 }
 
-val presenterModule: Module = module {
-    factory { (view: HomePresenter.HomeViewListener )-> HomePresenter(view = view, interactor = get()) }
-    factory { (view: DetailsPresenter.DetailsViewListener )-> DetailsPresenter(view = view, interactor = get()) }
+val vmModule: Module = module {
+    viewModel { HomeViewModel(interactor = get()) }
+    viewModel { DetailsViewModel(interactor = get()) }
 }
 
 val interactorsModule: Module = module {

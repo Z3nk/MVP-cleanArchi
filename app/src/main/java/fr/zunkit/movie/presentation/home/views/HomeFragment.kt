@@ -4,20 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import fr.zunkit.movie.databinding.HomeFragmentBinding
 import fr.zunkit.movie.presentation.home.adapters.MovieAdapter
-import fr.zunkit.movie.presentation.home.presenters.HomePresenter
+import fr.zunkit.movie.presentation.home.viewmodels.HomeViewModel
 import fr.zunkit.movie.presentation.model.Movie
-import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.KoinComponent
-import org.koin.core.parameter.parametersOf
 
 
-class HomeFragment : Fragment(), HomePresenter.HomeViewListener , KoinComponent{
+class HomeFragment : Fragment(), KoinComponent {
     companion object {
 
         const val TAG = "HomeFragment"
@@ -25,7 +24,7 @@ class HomeFragment : Fragment(), HomePresenter.HomeViewListener , KoinComponent{
 
     lateinit var binding: HomeFragmentBinding
 
-    val mPresenter: HomePresenter by inject { parametersOf(this) }
+    private val vm: HomeViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,15 +49,12 @@ class HomeFragment : Fragment(), HomePresenter.HomeViewListener , KoinComponent{
                 )
             }
         }
-        mPresenter.getPopularMovies()
-    }
+        vm.getPopularMovies().observe(viewLifecycleOwner, object : Observer<List<Movie>> {
+            override fun onChanged(movies: List<Movie>?) {
+                binding.lottieLoading.visibility = View.GONE
+                (binding.rvMovies.adapter as MovieAdapter).refreshListWith(movies!!)
+            }
 
-    override fun displayErrorServer() {
-        Toast.makeText(activity, "Probleme avec le serveur", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun displayMovies(movies: List<Movie>) {
-        binding.lottieLoading.visibility = View.GONE
-        (binding.rvMovies.adapter as MovieAdapter).refreshListWith(movies)
+        })
     }
 }
