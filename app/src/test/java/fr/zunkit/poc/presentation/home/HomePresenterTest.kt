@@ -1,4 +1,4 @@
-package fr.zunkit.streamkilled.presentation.home
+package fr.zunkit.poc.presentation.home
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
@@ -6,7 +6,7 @@ import com.nhaarman.mockitokotlin2.whenever
 import fr.zunkit.movie.domain.movie.interactors.MovieInteractor
 import fr.zunkit.movie.presentation.home.presenters.HomePresenter
 import fr.zunkit.movie.presentation.model.Movie
-import fr.zunkit.streamkilled.movieDefinitionEntity
+import fr.zunkit.poc.movieDefinitionEntity
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test

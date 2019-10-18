@@ -1,4 +1,4 @@
-package fr.zunkit.streamkilled.domain.movie.interactors
+package fr.zunkit.poc.domain.movie.interactors
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
