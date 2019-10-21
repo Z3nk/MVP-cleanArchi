@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
+import fr.zunkit.movie.App
 import fr.zunkit.movie.databinding.HomeFragmentBinding
 import fr.zunkit.movie.presentation.home.adapters.MovieAdapter
 import fr.zunkit.movie.presentation.home.presenters.HomePresenter
@@ -20,7 +21,7 @@ import org.koin.core.KoinComponent
 import org.koin.core.parameter.parametersOf
 
 
-class HomeFragment : Fragment(), HomePresenter.HomeViewListener , KoinComponent{
+class HomeFragment : Fragment(), HomePresenter.HomeViewListener, KoinComponent {
     companion object {
 
         const val TAG = "HomeFragment"
@@ -52,6 +53,19 @@ class HomeFragment : Fragment(), HomePresenter.HomeViewListener , KoinComponent{
                     )
                 )
             }
+        }
+        lifecycleScope.launch {
+            for(i in App.publisher.openSubscription()){
+                Toast.makeText(activity, "Home : $i", Toast.LENGTH_SHORT).show()
+            }
+//            App.publisher.consumeEach {
+//                Toast.makeText(activity, "Home : $it", Toast.LENGTH_SHORT).show()
+//            }
+        }
+        lifecycleScope.launch {
+//            for (value in App.channel) {
+//                println(value)
+//            }
         }
         lifecycleScope.launch(Dispatchers.Main) {
             mPresenter.getPopularMovies()
